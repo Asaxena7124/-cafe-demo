@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V Love Cafe — Love in Each Bite | Bareilly</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0a0608;
+  --deep:#110d0e;
+  --card:#1a1214;
+  --rose:#c0392b;
+  --rose2:#e74c3c;
+  --gold:#d4a843;
+  --gold2:#f0c060;
+  --green:#1e3d20;
+  --green2:#2d5a30;
+  --cream:#f5ede0;
+  --cream2:#e8d9c4;
+  --muted:#9a8878;
+  --border:rgba(212,168,67,0.18);
+  --font-display:'Playfair Display',serif;
+  --font-body:'Cormorant Garamond',serif;
+  --font-ui:'Josefin Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--noir);
+  color:var(--cream);
+  font-family:var(--font-body);
+  overflow-x:hidden;
+  cursor:default;
+}
+/* Scrollbar */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--noir)}
+::-webkit-scrollbar-thumb{background:var(--rose);border-radius:2px}
+
+/* ── PARTICLES ── */
+.hearts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.heart{
+  position:absolute;bottom:-20px;font-size:12px;
+  opacity:0;animation:floatHeart linear infinite;
+  color:var(--rose);filter:blur(0.5px);
+}
+@keyframes floatHeart{
+  0%{bottom:-20px;opacity:0;transform:translateX(0) scale(0.5)}
+  10%{opacity:0.4}
+  90%{opacity:0.1}
+  100%{bottom:110vh;opacity:0;transform:translateX(40px) scale(1)}
+}
+
+/* ── NOISE TEXTURE ── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity:0.6;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:70px;padding:0 5vw;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(10,6,8,0.9);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:all 0.4s;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  text-decoration:none;
+}
+.logo-wings{font-size:22px;filter:drop-shadow(0 0 8px rgba(192,57,43,0.6))}
+.logo-text{
+  font-family:var(--font-display);
+  font-size:20px;font-weight:700;
+  color:var(--cream);letter-spacing:2px;
+}
+.logo-text span{color:var(--rose)}
+.logo-sub{font-family:var(--font-ui);font-size:8px;letter-spacing:4px;color:var(--gold);display:block;margin-top:-2px}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{
+  font-family:var(--font-ui);font-size:11px;font-weight:600;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(245,237,224,0.6);text-decoration:none;
+  transition:color 0.3s;
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-reserve{
+  font-family:var(--font-ui) !important;font-size:11px !important;
+  background:var(--rose) !important;color:var(--cream) !important;
+  padding:9px 20px !important;border-radius:2px !important;
+  letter-spacing:2px !important;transition:all 0.3s !important;
+}
+.nav-reserve:hover{background:var(--rose2) !important;transform:translateY(-1px) !important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:22px;height:1.5px;background:var(--cream);display:block;transition:0.3s}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  padding:100px 5vw 80px;
+}
+/* Radial glow bg */
+.hero-glow{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:800px;height:600px;
+  background:radial-gradient(ellipse,rgba(192,57,43,0.12) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-glow2{
+  position:absolute;bottom:-100px;right:-100px;
+  width:500px;height:500px;
+  background:radial-gradient(ellipse,rgba(30,61,32,0.25) 0%,transparent 65%);
+  pointer-events:none;
+}
+/* Decorative vine lines */
+.vine-left{
+  position:absolute;left:0;top:0;bottom:0;width:120px;
+  background:linear-gradient(180deg,transparent 0%,rgba(30,61,32,0.15) 40%,rgba(30,61,32,0.2) 60%,transparent 100%);
+  border-right:1px solid rgba(30,61,32,0.2);
+}
+.vine-right{
+  position:absolute;right:0;top:0;bottom:0;width:120px;
+  background:linear-gradient(180deg,transparent 0%,rgba(30,61,32,0.15) 40%,rgba(30,61,32,0.2) 60%,transparent 100%);
+  border-left:1px solid rgba(30,61,32,0.2);
+}
+.hero-content{
+  position:relative;z-index:1;text-align:center;max-width:800px;
+}
+.hero-wings{
+  font-size:48px;margin-bottom:1.5rem;
+  display:block;
+  filter:drop-shadow(0 0 20px rgba(192,57,43,0.5));
+  animation:wingPulse 3s ease-in-out infinite;
+}
+@keyframes wingPulse{
+  0%,100%{filter:drop-shadow(0 0 20px rgba(192,57,43,0.5)) scale(1)}
+  50%{filter:drop-shadow(0 0 35px rgba(192,57,43,0.8))}
+}
+.hero-eyebrow{
+  font-family:var(--font-ui);font-size:11px;font-weight:400;
+  letter-spacing:5px;color:var(--gold);text-transform:uppercase;
+  margin-bottom:1.25rem;opacity:0;
+  animation:fadeUp 0.8s 0.2s ease both;
+}
+.hero-h1{
+  font-family:var(--font-display);
+  font-size:clamp(52px,9vw,110px);
+  font-weight:900;line-height:0.92;
+  letter-spacing:-1px;
+  color:var(--cream);
+  opacity:0;animation:fadeUp 0.8s 0.3s ease both;
+}
+.hero-h1 .v-word{color:var(--rose);font-style:italic}
+.hero-h1 .love-word{
+  -webkit-text-stroke:1.5px var(--cream);
+  color:transparent;
+}
+.hero-tagline{
+  font-family:var(--font-body);font-size:clamp(18px,2.5vw,26px);
+  font-style:italic;color:var(--gold);
+  margin:1.5rem 0 2rem;letter-spacing:1px;
+  opacity:0;animation:fadeUp 0.8s 0.4s ease both;
+}
+.hero-sub{
+  font-family:var(--font-body);font-size:17px;
+  color:rgba(245,237,224,0.65);
+  max-width:520px;margin:0 auto 2.5rem;line-height:1.85;
+  opacity:0;animation:fadeUp 0.8s 0.5s ease both;
+}
+.hero-btns{
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  opacity:0;animation:fadeUp 0.8s 0.6s ease both;
+}
+.btn-rose{
+  background:var(--rose);color:var(--cream);
+  padding:15px 36px;border-radius:2px;
+  font-family:var(--font-ui);font-size:11px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;text-decoration:none;
+  transition:all 0.3s;border:1.5px solid var(--rose);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.btn-rose:hover{background:transparent;color:var(--rose);transform:translateY(-2px)}
+.btn-ghost{
+  background:transparent;color:var(--cream);
+  padding:15px 36px;border-radius:2px;
+  font-family:var(--font-ui);font-size:11px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;text-decoration:none;
+  transition:all 0.3s;border:1.5px solid rgba(245,237,224,0.25);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.hero-divider{
+  display:flex;align-items:center;gap:1.5rem;justify-content:center;
+  margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border);
+  opacity:0;animation:fadeUp 0.8s 0.7s ease both;
+  flex-wrap:wrap;gap:3rem;
+}
+.hero-stat .num{
+  font-family:var(--font-display);font-size:40px;font-weight:700;
+  color:var(--gold);line-height:1;
+}
+.hero-stat .lbl{font-family:var(--font-ui);font-size:10px;letter-spacing:2px;color:var(--muted);margin-top:4px}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(28px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ── MARQUEE ── */
+.marquee-strip{
+  background:var(--rose);padding:14px 0;overflow:hidden;
+  border-top:1px solid rgba(255,255,255,0.1);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+.marquee-inner{
+  display:flex;gap:3rem;white-space:nowrap;
+  animation:scrollLeft 22s linear infinite;
+}
+@keyframes scrollLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{
+  font-family:var(--font-ui);font-size:11px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.9);
+  display:flex;align-items:center;gap:1.5rem;flex-shrink:0;
+}
+.marquee-item::after{content:'♡';color:rgba(255,255,255,0.5)}
+
+/* ── SECTIONS BASE ── */
+section{padding:100px 5vw;position:relative}
+.sec-eyebrow{
+  font-family:var(--font-ui);font-size:10px;font-weight:600;
+  letter-spacing:4px;text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:12px;margin-bottom:1rem;
+}
+.sec-eyebrow::before,.sec-eyebrow::after{
+  content:'';flex:1;height:1px;background:var(--border);
+}
+.sec-eyebrow.left-only::after{display:none}
+.sec-eyebrow.left-only::before{flex:0;width:30px}
+.sec-title{
+  font-family:var(--font-display);
+  font-size:clamp(36px,5vw,64px);
+  font-weight:700;line-height:1.05;letter-spacing:-0.5px;
+  color:var(--cream);margin-bottom:1.25rem;
+}
+.sec-sub{font-size:18px;color:var(--muted);line-height:1.85;max-width:540px}
+.sec-sub.italic{font-style:italic}
+
+/* ── ABOUT ── */
+.about-wrap{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:6rem;align-items:center;max-width:1200px;margin:0 auto;
+}
+.about-visual{position:relative}
+.about-frame{
+  aspect-ratio:3/4;
+  background:var(--deep);
+  border:1px solid var(--border);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+/* Decorative corner ornaments */
+.corner-ornament{
+  position:absolute;width:50px;height:50px;
+  border-color:var(--gold);border-style:solid;border-width:0;
+}
+.corner-ornament.tl{top:12px;left:12px;border-top-width:1.5px;border-left-width:1.5px}
+.corner-ornament.tr{top:12px;right:12px;border-top-width:1.5px;border-right-width:1.5px}
+.corner-ornament.bl{bottom:12px;left:12px;border-bottom-width:1.5px;border-left-width:1.5px}
+.corner-ornament.br{bottom:12px;right:12px;border-bottom-width:1.5px;border-right-width:1.5px}
+.about-center{text-align:center;padding:2rem}
+.about-big-icon{font-size:80px;display:block;margin-bottom:1rem}
+.about-frame-text{
+  font-family:var(--font-display);font-size:28px;font-weight:700;
+  color:var(--cream);letter-spacing:2px;
+}
+.about-frame-sub{font-family:var(--font-body);font-style:italic;color:var(--gold);font-size:16px;margin-top:6px}
+.about-badge{
+  position:absolute;bottom:-18px;right:-18px;
+  background:var(--rose);color:var(--cream);
+  width:90px;height:90px;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:var(--font-ui);font-size:10px;letter-spacing:1px;text-align:center;
+  border:2px solid var(--noir);box-shadow:0 0 30px rgba(192,57,43,0.4);
+}
+.about-badge strong{font-size:22px;font-family:var(--font-display)}
+.about-features{display:flex;flex-direction:column;gap:1.25rem;margin-top:2.5rem}
+.feat-item{
+  display:flex;gap:1rem;align-items:flex-start;
+  padding:1.1rem 1.25rem;
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:4px;transition:all 0.3s;
+}
+.feat-item:hover{border-color:rgba(192,57,43,0.35);background:rgba(192,57,43,0.04);transform:translateX(4px)}
+.feat-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.feat-text h4{font-family:var(--font-ui);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cream);margin-bottom:4px}
+.feat-text p{font-size:15px;color:var(--muted);line-height:1.65}
+
+/* ── MENU ── */
+.menu-section{background:var(--deep)}
+.menu-header{text-align:center;margin-bottom:3.5rem}
+.menu-tabs{display:flex;justify-content:center;gap:0;margin-bottom:3rem;flex-wrap:wrap}
+.mtab{
+  padding:10px 24px;
+  font-family:var(--font-ui);font-size:10px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--muted);background:transparent;border:none;cursor:pointer;
+  border-bottom:2px solid transparent;transition:all 0.25s;
+}
+.mtab.active,.mtab:hover{color:var(--rose);border-bottom-color:var(--rose)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.menu-panel{display:none}
+.menu-panel.active{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.menu-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:4px;padding:1.75rem;
+  transition:all 0.3s;position:relative;overflow:hidden;
+}
+.menu-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--rose),transparent);
+  transform:scaleX(0);transition:transform 0.3s;transform-origin:left;
+}
+.menu-card:hover{border-color:rgba(192,57,43,0.3);transform:translateY(-3px)}
+.menu-card:hover::before{transform:scaleX(1)}
+.menu-emoji{font-size:32px;margin-bottom:0.75rem;display:block}
+.menu-card h4{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--cream);margin-bottom:6px}
+.menu-card p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+.menu-price{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--gold)}
+.menu-badge{
+  position:absolute;top:14px;right:14px;
+  font-family:var(--font-ui);font-size:9px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  background:var(--rose);color:var(--cream);
+  padding:3px 9px;border-radius:2px;
+}
+
+/* ── EXPERIENCE ── */
+.exp-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;margin-top:4rem;max-width:1200px;margin:4rem auto 0;
+}
+.exp-card{
+  text-align:center;padding:2.5rem 1.5rem;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:4px;transition:all 0.3s;cursor:default;
+}
+.exp-card:hover{border-color:rgba(212,168,67,0.3);transform:translateY(-4px)}
+.exp-icon{font-size:44px;margin-bottom:1.25rem;display:block}
+.exp-card h3{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--cream);margin-bottom:0.75rem}
+.exp-card p{font-size:15px;color:var(--muted);line-height:1.75}
+
+/* ── GALLERY ── */
+.gallery-section{background:var(--deep)}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:auto;
+  gap:1rem;margin-top:3rem;
+}
+.g-item{
+  position:relative;overflow:hidden;cursor:pointer;
+  border:1px solid var(--border);border-radius:4px;
+  background:var(--card);aspect-ratio:4/3;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform 0.3s;
+}
+.g-item:nth-child(1){grid-column:span 2;aspect-ratio:16/9}
+.g-item:hover{transform:scale(1.01)}
+.g-item:hover .g-overlay{opacity:1}
+.g-inner{
+  width:100%;height:100%;display:flex;
+  align-items:center;justify-content:center;flex-direction:column;gap:8px;
+  background:linear-gradient(135deg,var(--card),rgba(30,61,32,0.3));
+}
+.g-emoji{font-size:40px;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.6))}
+.g-label{font-family:var(--font-body);font-style:italic;font-size:14px;color:var(--muted)}
+.g-overlay{
+  position:absolute;inset:0;
+  background:rgba(10,6,8,0.82);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  opacity:0;transition:opacity 0.3s;padding:1.5rem;text-align:center;
+}
+.g-overlay h4{font-family:var(--font-display);font-size:18px;color:var(--cream);margin-bottom:6px}
+.g-overlay p{font-size:13px;color:var(--muted)}
+.g-overlay span{
+  display:inline-block;margin-top:12px;
+  font-family:var(--font-ui);font-size:10px;letter-spacing:2px;
+  color:var(--rose);border:1px solid var(--rose);padding:4px 12px;border-radius:2px;
+}
+
+/* ── SPECIAL OFFER ── */
+.offer-section{
+  background:linear-gradient(135deg,var(--rose) 0%,#8b1a1a 100%);
+  padding:80px 5vw;text-align:center;
+  position:relative;overflow:hidden;
+}
+.offer-section::before{
+  content:'♡';position:absolute;top:-30px;left:10%;
+  font-size:200px;color:rgba(255,255,255,0.04);line-height:1;
+}
+.offer-section::after{
+  content:'♡';position:absolute;bottom:-30px;right:10%;
+  font-size:200px;color:rgba(255,255,255,0.04);line-height:1;
+}
+.offer-section h2{
+  font-family:var(--font-display);font-size:clamp(28px,5vw,52px);
+  font-weight:700;color:#fff;margin-bottom:0.75rem;
+  position:relative;z-index:1;
+}
+.offer-section p{
+  font-family:var(--font-body);font-style:italic;font-size:20px;
+  color:rgba(255,255,255,0.8);margin-bottom:1.5rem;
+  position:relative;z-index:1;
+}
+.offer-code{
+  display:inline-block;padding:10px 28px;
+  border:2px dashed rgba(255,255,255,0.5);
+  font-family:var(--font-ui);font-size:22px;font-weight:700;
+  letter-spacing:6px;color:#fff;
+  position:relative;z-index:1;
+  animation:codePulse 2s ease-in-out infinite;
+}
+@keyframes codePulse{
+  0%,100%{border-color:rgba(255,255,255,0.4)}
+  50%{border-color:rgba(255,255,255,0.9)}
+}
+
+/* ── VISIT ── */
+.visit-wrap{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:6rem;align-items:start;max-width:1200px;margin:0 auto;
+}
+.info-list{display:flex;flex-direction:column;gap:1.25rem;margin-top:2rem}
+.info-item{
+  display:flex;gap:1rem;align-items:flex-start;
+  padding:1.1rem 1.25rem;
+  border:1px solid var(--border);border-radius:4px;
+  transition:border-color 0.3s;
+}
+.info-item:hover{border-color:rgba(212,168,67,0.3)}
+.info-icon-wrap{
+  width:40px;height:40px;border-radius:4px;flex-shrink:0;
+  background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.2);
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+}
+.info-item-text label{
+  font-family:var(--font-ui);font-size:9px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px;
+}
+.info-item-text p{font-size:16px;color:var(--cream);font-weight:400}
+.info-item-text small{font-size:13px;color:var(--muted);font-style:italic}
+.map-box{
+  border:1px solid var(--border);border-radius:4px;
+  aspect-ratio:4/3;
+  background:var(--card);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:1.25rem;
+  position:relative;overflow:hidden;
+}
+.map-bg-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(212,168,67,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(212,168,67,0.04) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+.map-pin-big{font-size:48px;position:relative;z-index:1}
+.map-name{
+  font-family:var(--font-display);font-size:20px;font-weight:700;
+  color:var(--cream);text-align:center;position:relative;z-index:1;
+}
+.map-addr{font-family:var(--font-body);font-style:italic;font-size:14px;color:var(--muted);text-align:center;position:relative;z-index:1}
+.map-open-btn{
+  position:relative;z-index:1;
+  font-family:var(--font-ui);font-size:10px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(212,168,67,0.35);
+  padding:9px 20px;border-radius:2px;text-decoration:none;
+  transition:all 0.25s;
+}
+.map-open-btn:hover{background:rgba(212,168,67,0.1)}
+.action-btns{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+.btn-call{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--rose);color:var(--cream);
+  padding:13px 20px;border-radius:2px;text-decoration:none;
+  font-family:var(--font-ui);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  transition:all 0.25s;border:1.5px solid var(--rose);
+}
+.btn-call:hover{background:transparent;color:var(--rose)}
+.btn-wa{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:#25D366;color:#fff;
+  padding:13px 20px;border-radius:2px;text-decoration:none;
+  font-family:var(--font-ui);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  transition:all 0.25s;border:1.5px solid #25D366;
+}
+.btn-wa:hover{background:transparent;color:#25D366}
+
+/* ── REVIEWS ── */
+.reviews-section{background:var(--deep)}
+.reviews-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:1.5rem;margin-top:3.5rem;
+}
+.review-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:4px;padding:2rem;transition:all 0.3s;
+}
+.review-card:hover{border-color:rgba(212,168,67,0.25);transform:translateY(-3px)}
+.review-stars{color:var(--gold);font-size:16px;letter-spacing:3px;margin-bottom:1rem}
+.review-text{
+  font-family:var(--font-body);font-style:italic;
+  font-size:16px;line-height:1.8;color:var(--cream);
+  margin-bottom:1.5rem;
+}
+.review-author{display:flex;align-items:center;gap:12px}
+.review-av{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--rose),#8b1a1a);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-ui);font-size:13px;font-weight:700;
+  color:#fff;flex-shrink:0;border:1.5px solid rgba(192,57,43,0.5);
+}
+.review-name{font-family:var(--font-ui);font-size:12px;font-weight:600;letter-spacing:1px;color:var(--cream)}
+.review-meta{font-size:12px;color:var(--muted);margin-top:2px}
+
+/* ── RESERVE ── */
+.reserve-wrap{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:6rem;max-width:1200px;margin:0 auto;align-items:start;
+}
+.reserve-form{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{
+  font-family:var(--font-ui);font-size:9px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);
+}
+.form-group input,.form-group select,.form-group textarea{
+  background:var(--card);border:1px solid var(--border);
+  color:var(--cream);padding:13px 15px;
+  font-family:var(--font-body);font-size:15px;
+  border-radius:3px;outline:none;transition:all 0.25s;resize:vertical;
+}
+.form-group input::placeholder{color:rgba(154,136,120,0.5)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:rgba(192,57,43,0.5);background:rgba(192,57,43,0.04);
+}
+.form-group select option{background:var(--deep)}
+.btn-submit{
+  background:var(--rose);color:var(--cream);
+  padding:15px 28px;border:1.5px solid var(--rose);
+  font-family:var(--font-ui);font-size:11px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  cursor:pointer;border-radius:2px;
+  transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.btn-submit:hover{background:transparent;color:var(--rose);transform:translateY(-1px)}
+.wa-book{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:#25D366;color:#fff;
+  padding:13px 28px;border-radius:2px;text-decoration:none;
+  font-family:var(--font-ui);font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  border:1.5px solid #25D366;transition:all 0.25s;
+}
+.wa-book:hover{background:transparent;color:#25D366}
+.reserve-perks{display:flex;flex-direction:column;gap:1rem}
+.perk{
+  display:flex;gap:1rem;align-items:flex-start;
+  background:rgba(255,255,255,0.02);border:1px solid var(--border);
+  border-radius:4px;padding:1rem 1.25rem;transition:border-color 0.3s;
+}
+.perk:hover{border-color:rgba(192,57,43,0.3)}
+.perk-icon{font-size:24px;flex-shrink:0}
+.perk h4{font-family:var(--font-ui);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cream);margin-bottom:4px}
+.perk p{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* ── FAQ ── */
+.faq-section{background:var(--deep)}
+.faq-list{max-width:720px;margin:3.5rem auto 0;display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-q{
+  width:100%;background:none;border:none;
+  padding:1.25rem 0;text-align:left;cursor:pointer;
+  font-family:var(--font-body);font-size:17px;font-weight:500;
+  color:var(--cream);display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  transition:color 0.2s;
+}
+.faq-q:hover{color:var(--gold)}
+.faq-arrow{font-size:20px;color:var(--rose);transition:transform 0.3s;flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.faq-item.open .faq-a{max-height:200px}
+.faq-a p{padding:0 0 1.25rem;font-size:15px;color:var(--muted);line-height:1.85;font-style:italic}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--deep);border-top:1px solid var(--border);
+  padding:70px 5vw 30px;
+}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3.5rem}
+.footer-logo-wrap{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.footer-logo-text{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--cream)}
+.footer-logo-text span{color:var(--rose)}
+.footer-tagline-text{font-family:var(--font-body);font-style:italic;font-size:16px;color:var(--gold);margin-bottom:1rem}
+.footer-brand p{font-size:14px;color:var(--muted);line-height:1.85;max-width:300px}
+.footer-socials{display:flex;gap:0.75rem;margin-top:1.25rem}
+.social-btn{
+  width:36px;height:36px;border-radius:3px;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;text-decoration:none;
+  transition:all 0.25s;color:var(--cream);
+}
+.social-btn:hover{border-color:var(--rose);background:rgba(192,57,43,0.1)}
+.footer-h5{
+  font-family:var(--font-ui);font-size:10px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;
+}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+.footer-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color 0.2s;font-family:var(--font-body)}
+.footer-links a:hover{color:var(--cream)}
+.footer-bottom{
+  border-top:1px solid var(--border);padding-top:2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-bottom p{font-size:12px;color:var(--muted);font-family:var(--font-ui);letter-spacing:1px}
+.footer-bottom span{color:var(--rose)}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav-links.open{
+    display:flex;flex-direction:column;
+    position:fixed;top:70px;inset:70px 0 0;
+    background:rgba(10,6,8,0.98);padding:2rem 5vw;gap:1.5rem;z-index:999;
+  }
+  .nav-links.open a{font-size:16px}
+  .hamburger{display:flex}
+  .about-wrap,.visit-wrap,.reserve-wrap{grid-template-columns:1fr}
+  .about-visual{display:none}
+  .exp-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .g-item:nth-child(1){grid-column:span 2;aspect-ratio:16/9}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  section{padding:70px 5vw}
+  .hero-stat .num{font-size:30px}
+}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- Floating hearts -->
+<div class="hearts" id="hearts"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#">
+    <span class="logo-wings">🕊️</span>
+    <div>
+      <div class="logo-text"><span>V</span> LOVE CAFE</div>
+      <span class="logo-sub">Love in each bite</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#experience">Ambience</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="#reserve" class="nav-reserve">Reserve Table</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hearts-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="vine-left"></div>
+  <div class="vine-right"></div>
+  <div class="hero-content">
+    <span class="hero-wings">🕊️♡🕊️</span>
+    <p class="hero-eyebrow">The Best Cafe in Bareilly</p>
+    <h1 class="hero-h1">
+      <span class="v-word">V</span> <span class="love-word">LOVE</span><br>CAFE
+    </h1>
+    <p class="hero-tagline">"Love in each bite..."</p>
+    <p class="hero-sub">Step into Bareilly's most romantic cafe — where every dish is crafted with love, every corner blooms with life, and every moment becomes a memory worth cherishing.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-rose">♡ &nbsp;Explore Menu</a>
+      <a href="#reserve" class="btn-ghost">Reserve a Table →</a>
+    </div>
+    <div class="hero-divider">
+      <div class="hero-stat"><div class="num" data-target="4.2">0</div><div class="lbl">Google Rating</div></div>
+      <div class="hero-stat"><div class="num" data-target="70">0<span>+</span></div><div class="lbl">Happy Reviews</div></div>
+      <div class="hero-stat"><div class="num">10</div><div class="lbl">AM – 9 PM</div></div>
+      <div class="hero-stat"><div class="num">7</div><div class="lbl">Days Open</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <div class="marquee-item">V Love Cafe</div>
+    <div class="marquee-item">Love in each bite</div>
+    <div class="marquee-item">The best cafe in Bareilly</div>
+    <div class="marquee-item">Romantic Ambience</div>
+    <div class="marquee-item">Deen Dayal Puram</div>
+    <div class="marquee-item">Open 10AM – 9PM</div>
+    <div class="marquee-item">V Love Cafe</div>
+    <div class="marquee-item">Love in each bite</div>
+    <div class="marquee-item">The best cafe in Bareilly</div>
+    <div class="marquee-item">Romantic Ambience</div>
+    <div class="marquee-item">Deen Dayal Puram</div>
+    <div class="marquee-item">Open 10AM – 9PM</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap">
+    <div>
+      <div class="sec-eyebrow left-only reveal">Our Story</div>
+      <h2 class="sec-title reveal">Where Love<br>Meets Flavour</h2>
+      <p class="sec-sub italic reveal">"We believe great food is an expression of love — and that's exactly what we put into every dish, every drink, every smile."</p>
+      <p class="sec-sub reveal" style="margin-top:1rem;font-style:normal;font-size:16px">V Love Cafe is Bareilly's most romantic dining destination — a lush, intimate space adorned with angel wings, vibrant greenery, and warm intimate lighting. Born from a passion to create a place where every visit feels special, we serve heart-crafted food with soul.</p>
+      <div class="about-features reveal">
+        <div class="feat-item">
+          <div class="feat-icon">🌿</div>
+          <div class="feat-text">
+            <h4>Lush Green Ambience</h4>
+            <p>Our cafe entrance and interiors are filled with living plants and greenery — a breath of fresh air right in the heart of Bareilly.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">🕊️</div>
+          <div class="feat-text">
+            <h4>Angel Wings — Our Symbol of Love</h4>
+            <p>The iconic V Love wings logo reflects our belief: love lifts everything it touches — just like good food lifts the spirit.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">🍽️</div>
+          <div class="feat-text">
+            <h4>Made with Love, Always</h4>
+            <p>Every item on our menu is prepared fresh, with care and quality ingredients — because you deserve nothing less than the best.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">💑</div>
+          <div class="feat-text">
+            <h4>Perfect for Couples & Families</h4>
+            <p>Private cabin seating, cozy nooks, and romantic lighting make V Love the go-to spot for dates, anniversaries, and family evenings.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual reveal">
+      <div class="about-frame">
+        <div class="corner-ornament tl"></div>
+        <div class="corner-ornament tr"></div>
+        <div class="corner-ornament bl"></div>
+        <div class="corner-ornament br"></div>
+        <div class="about-center">
+          <span class="about-big-icon">🌹</span>
+          <div class="about-frame-text">V LOVE<br>CAFE</div>
+          <div class="about-frame-sub">Love in each bite...</div>
+          <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:8px">
+            <div style="font-family:var(--font-ui);font-size:10px;letter-spacing:2px;color:var(--muted)">COUPLE CABIN &nbsp;•&nbsp; HOOKAH &nbsp;•&nbsp; WELCOME</div>
+            <div style="display:flex;gap:8px;justify-content:center;margin-top:4px">
+              <span style="font-size:11px;background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.3);color:var(--rose);padding:4px 10px;border-radius:2px;font-family:var(--font-ui);letter-spacing:1px">★ 4.2</span>
+              <span style="font-size:11px;background:rgba(212,168,67,0.08);border:1px solid var(--border);color:var(--gold);padding:4px 10px;border-radius:2px;font-family:var(--font-ui);letter-spacing:1px">70+ Reviews</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-badge">
+        <strong>♡</strong>
+        <span>LOVE IN<br>EACH BITE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="menu-section">
+  <div class="menu-header">
+    <div class="sec-eyebrow reveal" style="justify-content:center">What we serve</div>
+    <h2 class="sec-title reveal">Our Menu</h2>
+    <p class="sec-sub italic reveal" style="margin:0 auto">Every bite crafted with love — from morning coffee to evening bites, we've got your heart covered.</p>
+  </div>
+  <div class="menu-tabs reveal">
+    <button class="mtab active" onclick="switchMenu('coffee',this)">☕ Coffee</button>
+    <button class="mtab" onclick="switchMenu('snacks',this)">🥪 Snacks</button>
+    <button class="mtab" onclick="switchMenu('meals',this)">🍽️ Meals</button>
+    <button class="mtab" onclick="switchMenu('desserts',this)">🍰 Desserts</button>
+    <button class="mtab" onclick="switchMenu('drinks',this)">🥤 Cold Drinks</button>
+    <button class="mtab" onclick="switchMenu('hookah',this)">💨 Hookah</button>
+  </div>
+
+  <div class="menu-panel active" id="menu-coffee">
+    <div class="menu-card"><span class="menu-emoji">☕</span><h4>Love Latte</h4><p>Signature espresso with silky steamed milk and a heart-shaped latte art — our most romantic cup.</p><div class="menu-price">₹180</div><span class="menu-badge">🔥 Bestseller</span></div>
+    <div class="menu-card"><span class="menu-emoji">🥛</span><h4>Classic Cappuccino</h4><p>Double shot espresso topped with velvety foam — rich, bold, and perfectly balanced.</p><div class="menu-price">₹160</div></div>
+    <div class="menu-card"><span class="menu-emoji">🧋</span><h4>V Love Cold Coffee</h4><p>Blended chilled coffee with cream and ice — sweet, strong, and made for Bareilly afternoons.</p><div class="menu-price">₹150</div></div>
+    <div class="menu-card"><span class="menu-emoji">🍫</span><h4>Dark Mocha</h4><p>Rich dark chocolate blended with espresso and steamed milk — indulgent and deeply satisfying.</p><div class="menu-price">₹190</div></div>
+    <div class="menu-card"><span class="menu-emoji">🌿</span><h4>Masala Chai Special</h4><p>House-spiced ginger-cardamom tea brewed the old-fashioned way — comfort in a cup.</p><div class="menu-price">₹80</div></div>
+    <div class="menu-card"><span class="menu-emoji">🍵</span><h4>Green Tea Refresh</h4><p>Premium green tea with a hint of lemon and honey — light, calming, and guilt-free.</p><div class="menu-price">₹100</div></div>
+  </div>
+
+  <div class="menu-panel" id="menu-snacks">
+    <div class="menu-card"><span class="menu-emoji">🥪</span><h4>V Love Club Sandwich</h4><p>Triple-decker toasted sandwich with grilled fillings, cheese, fresh veggies and signature sauce.</p><div class="menu-price">₹220</div><span class="menu-badge">🔥 Popular</span></div>
+    <div class="menu-card"><span class="menu-emoji">🧀</span><h4>Cheese Garlic Bread</h4><p>Thick-sliced bread loaded with roasted garlic butter and melted mozzarella — the perfect pairing.</p><div class="menu-price">₹150</div></div>
+    <div class="menu-card"><span class="menu-emoji">🍕</span><h4>Mini Veg Pizza</h4><p>Crispy thin-crust pizza with tomato sauce, cheese and fresh vegetables — made to order.</p><div class="menu-price">₹200</div></div>
+    <div class="menu-card"><span class="menu-emoji">🍟</span><h4>Loaded Fries</h4><p>Golden crispy fries topped with cheese sauce, jalapeños and herbs. Best shared — or not.</p><div class="menu-price">₹160</div></div>
+    <div class="menu-card"><span class="menu-emoji">🌯</span><h4>Veg Wrap</h4><p>Whole wheat wrap stuffed with grilled veggies, hummus and crunchy lettuce with herb dip.</p><div class="menu-price">₹180</div></div>
+    <div class="menu-card"><span class="menu-emoji">🥗</span><h4>Spring Rolls</h4><p>Crispy fried rolls filled with spiced vegetables — served with sweet chilli sauce.</p><div class="menu-price">₹150</div></div>
+  </div>
+
+  <div class="menu-panel" id="menu-meals">
+    <div class="menu-card"><span class="menu-emoji">🍝</span><h4>Pasta in White Sauce</h4><p>Creamy béchamel pasta with mushrooms and bell peppers — rich, filling and comforting.</p><div class="menu-price">₹260</div><span class="menu-badge">✨ Chef's Pick</span></div>
+    <div class="menu-card"><span class="menu-emoji">🍝</span><h4>Arrabiata Pasta</h4><p>Penne in spicy tomato herb sauce with olives and fresh basil — a bold classic.</p><div class="menu-price">₹250</div></div>
+    <div class="menu-card"><span class="menu-emoji">🥞</span><h4>Fluffy Pancakes</h4><p>Three thick American pancakes with maple syrup, butter and seasonal fruit. Weekend special.</p><div class="menu-price">₹220</div></div>
+    <div class="menu-card"><span class="menu-emoji">🍛</span><h4>Paneer Tikka Plate</h4><p>Grilled cottage cheese with tandoori spices, mint chutney and fresh-cut onions.</p><div class="menu-price">₹280</div></div>
+    <div class="menu-card"><span class="menu-emoji">🥗</span><h4>Garden Salad Bowl</h4><p>Fresh garden vegetables with house dressing — light, healthy and perfectly seasoned.</p><div class="menu-price">₹180</div></div>
+  </div>
+
+  <div class="menu-panel" id="menu-desserts">
+    <div class="menu-card"><span class="menu-emoji">🍫</span><h4>Lava Chocolate Cake</h4><p>Warm dark chocolate cake with a molten centre — served with vanilla ice cream. Pure love.</p><div class="menu-price">₹250</div><span class="menu-badge">♡ Fan Fav</span></div>
+    <div class="menu-card"><span class="menu-emoji">🍮</span><h4>Crème Brûlée</h4><p>Silky vanilla custard with a caramelised sugar crust — broken at the table for you.</p><div class="menu-price">₹230</div></div>
+    <div class="menu-card"><span class="menu-emoji">🧁</span><h4>Nutella Waffle</h4><p>Crispy Belgian waffle with Nutella, banana slices and powdered sugar dusting.</p><div class="menu-price">₹200</div></div>
+    <div class="menu-card"><span class="menu-emoji">🍨</span><h4>Ice Cream Sundae</h4><p>Three scoops of premium ice cream with chocolate drizzle, nuts and a cherry on top.</p><div class="menu-price">₹180</div></div>
+    <div class="menu-card"><span class="menu-emoji">🍰</span><h4>Red Velvet Slice</h4><p>Classic red velvet cake with cream cheese frosting — rich, moist and deeply romantic.</p><div class="menu-price">₹220</div><span class="menu-badge">♡ Special</span></div>
+  </div>
+
+  <div class="menu-panel" id="menu-drinks">
+    <div class="menu-card"><span class="menu-emoji">🥤</span><h4>V Love Lemonade</h4><p>Fresh-squeezed lemon with mint, black salt and soda — our signature house drink.</p><div class="menu-price">₹110</div><span class="menu-badge">🔥 Top Pick</span></div>
+    <div class="menu-card"><span class="menu-emoji">🍓</span><h4>Strawberry Shake</h4><p>Thick blended strawberries with cold milk and ice cream — sweet and creamy.</p><div class="menu-price">₹160</div></div>
+    <div class="menu-card"><span class="menu-emoji">🥭</span><h4>Mango Lassi</h4><p>Thick Alphonso mango lassi with a hint of cardamom — summer in a glass.</p><div class="menu-price">₹140</div></div>
+    <div class="menu-card"><span class="menu-emoji">🍋</span><h4>Virgin Mojito</h4><p>Mint, lime, sugar syrup and soda over crushed ice — timeless and refreshing.</p><div class="menu-price">₹130</div></div>
+    <div class="menu-card"><span class="menu-emoji">🍇</span><h4>Grape Slushie</h4><p>Chilled grape juice blended with crushed ice and a hint of lime. Cool and tart.</p><div class="menu-price">₹120</div></div>
+  </div>
+
+  <div class="menu-panel" id="menu-hookah">
+    <div class="menu-card"><span class="menu-emoji">💨</span><h4>Classic Mint Hookah</h4><p>Fresh mint flavour — cool, smooth and refreshing. Our most popular hookah choice.</p><div class="menu-price">₹350</div><span class="menu-badge">🔥 Popular</span></div>
+    <div class="menu-card"><span class="menu-emoji">🍎</span><h4>Double Apple Hookah</h4><p>Sweet double apple blend — smooth clouds and rich fruity flavour throughout.</p><div class="menu-price">₹350</div></div>
+    <div class="menu-card"><span class="menu-emoji">🍇</span><h4>Grape Ice Hookah</h4><p>Icy grape flavour with a cooling menthol finish — perfect for long evenings.</p><div class="menu-price">₹380</div></div>
+    <div class="menu-card"><span class="menu-emoji">🫐</span><h4>Blueberry Blast</h4><p>Sweet blueberry blend with a refreshing finish — a customer favourite every evening.</p><div class="menu-price">₹380</div></div>
+    <div class="menu-card"><span class="menu-emoji">🌹</span><h4>Rose Garden</h4><p>Delicate rose flavour hookah — light, fragrant, and romantic. Made for special evenings.</p><div class="menu-price">₹400</div><span class="menu-badge">♡ Romantic</span></div>
+    <div class="menu-card"><span class="menu-emoji">🍑</span><h4>Peach Cream</h4><p>Sweet peachy hookah with a creamy finish — smooth clouds, sweet aftertaste.</p><div class="menu-price">₹380</div></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div style="text-align:center">
+    <div class="sec-eyebrow reveal" style="justify-content:center">Why V Love</div>
+    <h2 class="sec-title reveal">The V Love<br>Experience</h2>
+    <p class="sec-sub italic reveal" style="margin:0 auto">More than a cafe — a feeling you'll carry home with you.</p>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card reveal">
+      <span class="exp-icon">💑</span>
+      <h3>Couple Cabins</h3>
+      <p>Private, intimate seating zones designed for couples — cozy, candlelit, and completely romantic. Perfect for dates and anniversaries.</p>
+    </div>
+    <div class="exp-card reveal">
+      <span class="exp-icon">🌿</span>
+      <h3>Lush Garden Entrance</h3>
+      <p>Walk into V Love through a welcoming garden of real plants and greenery — a refreshing, natural oasis right in Deen Dayal Puram.</p>
+    </div>
+    <div class="exp-card reveal">
+      <span class="exp-icon">🕊️</span>
+      <h3>Iconic Angel Wings</h3>
+      <p>Our signature black angel wings decor — the most photographed wall in the cafe. Every visit deserves a stunning photo moment.</p>
+    </div>
+    <div class="exp-card reveal">
+      <span class="exp-icon">💨</span>
+      <h3>Premium Hookah Lounge</h3>
+      <p>A dedicated hookah zone with premium flavours — relax, unwind, and enjoy the evening with friends in a comfortable atmosphere.</p>
+    </div>
+    <div class="exp-card reveal">
+      <span class="exp-icon">🎂</span>
+      <h3>Birthday & Anniversary Setup</h3>
+      <p>Special decoration packages for birthdays and anniversaries — candles, balloons, personalised messages. Tell us and we'll make it magical.</p>
+    </div>
+    <div class="exp-card reveal">
+      <span class="exp-icon">♡</span>
+      <h3>Love in Every Detail</h3>
+      <p>From the menu to the music, the decor to the service — every single detail at V Love Cafe is designed to make you feel special and loved.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery-section">
+  <div>
+    <div class="sec-eyebrow left-only reveal">Inside V Love</div>
+    <h2 class="sec-title reveal">A Cafe Dressed<br>in Love</h2>
+    <p class="sec-sub italic reveal">Every corner is a memory waiting to happen.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-item reveal">
+      <div class="g-inner" style="background:linear-gradient(135deg,#0d1a0e,rgba(30,61,32,0.4))">
+        <span class="g-emoji">🌿</span>
+        <span class="g-label">Garden entrance & greenery</span>
+      </div>
+      <div class="g-overlay">
+        <h4>Lush Green Entrance</h4>
+        <p>Dozens of potted plants frame our cafe entrance — natural, welcoming, and full of life</p>
+        <span>Welcome to V Love</span>
+      </div>
+    </div>
+    <div class="g-item reveal">
+      <div class="g-inner" style="background:linear-gradient(135deg,#1a0a0e,rgba(192,57,43,0.2))">
+        <span class="g-emoji">🕊️</span>
+        <span class="g-label">Angel wings wall</span>
+      </div>
+      <div class="g-overlay">
+        <h4>The Angel Wings Wall</h4>
+        <p>Our iconic signature decor — spread your wings and let love lift you</p>
+        <span>Most Photographed Spot</span>
+      </div>
+    </div>
+    <div class="g-item reveal">
+      <div class="g-inner" style="background:linear-gradient(135deg,#0a0e1a,rgba(30,40,80,0.4))">
+        <span class="g-emoji">💑</span>
+        <span class="g-label">Couple cabin seating</span>
+      </div>
+      <div class="g-overlay">
+        <h4>Private Couple Cabins</h4>
+        <p>Intimate, cozy, and completely private — your perfect date night zone</p>
+        <span>Book in Advance</span>
+      </div>
+    </div>
+    <div class="g-item reveal">
+      <div class="g-inner" style="background:linear-gradient(135deg,#1a0e08,rgba(150,80,20,0.2))">
+        <span class="g-emoji">☕</span>
+        <span class="g-label">Love Latte art</span>
+      </div>
+      <div class="g-overlay">
+        <h4>Love Latte Art</h4>
+        <p>Every cup comes with a heart — because love is in every sip</p>
+        <span>Our Signature Cup</span>
+      </div>
+    </div>
+    <div class="g-item reveal">
+      <div class="g-inner" style="background:linear-gradient(135deg,#14080e,rgba(120,20,50,0.3))">
+        <span class="g-emoji">🌹</span>
+        <span class="g-label">Romantic evenings</span>
+      </div>
+      <div class="g-overlay">
+        <h4>Evening Vibes</h4>
+        <p>Warm lighting, soft music, and the perfect company — that's a V Love evening</p>
+        <span>Open Till 9 PM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIAL OFFER -->
+<div class="offer-section">
+  <p style="font-family:var(--font-ui);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.5rem">Limited Time</p>
+  <h2>Free Dessert on Every Couple Booking</h2>
+  <p>Book a couple cabin in advance and get a complimentary Red Velvet Cake slice — on us.</p>
+  <div class="offer-code">VLOVE♡</div>
+  <p style="margin-top:1.25rem;font-size:14px;color:rgba(255,255,255,0.6)">Show this code when you arrive or mention it while booking on WhatsApp</p>
+</div>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="visit-wrap">
+    <div>
+      <div class="sec-eyebrow left-only reveal">Find us</div>
+      <h2 class="sec-title reveal">Come Visit<br>With Love</h2>
+      <p class="sec-sub italic reveal">We're open every day — your perfect cafe day is always waiting at V Love.</p>
+      <div class="info-list reveal">
+        <div class="info-item">
+          <div class="info-icon-wrap">📍</div>
+          <div class="info-item-text">
+            <label>Address</label>
+            <p>Deen Dayal Puram, near Gangaour Sweets</p>
+            <small>Bareilly, Uttar Pradesh — 243122</small>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon-wrap">⏰</div>
+          <div class="info-item-text">
+            <label>Opening Hours</label>
+            <p>10:00 AM — 9:00 PM</p>
+            <small>Open all 7 days of the week</small>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon-wrap">📊</div>
+          <div class="info-item-text">
+            <label>Google Rating</label>
+            <p>⭐ 4.2 / 5 &nbsp;·&nbsp; 70+ Reviews</p>
+            <small>Bareilly's beloved romantic cafe</small>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon-wrap">💳</div>
+          <div class="info-item-text">
+            <label>Payments</label>
+            <p>Cash · UPI · All Cards Welcome</p>
+            <small>No minimum order value</small>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon-wrap">🚗</div>
+          <div class="info-item-text">
+            <label>Parking & Access</label>
+            <p>Street parking available nearby</p>
+            <small>Auto & cab accessible from all Bareilly areas</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="map-box">
+        <div class="map-bg-lines"></div>
+        <span class="map-pin-big">📍</span>
+        <div class="map-name">V LOVE CAFE</div>
+        <div class="map-addr">Deen Dayal Puram, Bareilly</div>
+        <a href="https://maps.google.com/?q=V+Love+Cafe+Bareilly" class="map-open-btn" target="_blank">Open in Google Maps ↗</a>
+      </div>
+      <div class="action-btns" style="margin-top:1.25rem">
+        <a href="tel:+91XXXXXXXXXX" class="btn-call">📞 &nbsp;Call Now</a>
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%20want%20to%20book%20a%20table%20at%20V%20Love%20Cafe" class="btn-wa" target="_blank">💬 &nbsp;WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="sec-eyebrow left-only reveal">What people say</div>
+  <h2 class="sec-title reveal">Voices of Love</h2>
+  <p class="sec-sub italic reveal">Real experiences from real hearts — our happiest guests.</p>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The couple cabin was absolutely perfect for our anniversary! The cafe is decorated so beautifully — plants everywhere, the angel wings wall is stunning. The lava cake was divine. Will definitely come back!"</p>
+      <div class="review-author">
+        <div class="review-av">AK</div>
+        <div>
+          <div class="review-name">Ananya Kapoor</div>
+          <div class="review-meta">Google Review · 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Bareilly ka sabse romantic cafe! Yahan aake alag hi feel hoti hai. Hookah bhi zabardast tha aur coffee bilkul mast. Staff bahut friendly hai. Definitely 5 stars!"</p>
+      <div class="review-author">
+        <div class="review-av">RS</div>
+        <div>
+          <div class="review-name">Rohit Sharma</div>
+          <div class="review-meta">Google Review · 2024</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★☆</div>
+      <p class="review-text">"Really loved the green entrance — so refreshing! The sandwiches were tasty and the cold coffee was spot on. Pricing is very reasonable for the quality. Great place for a date!"</p>
+      <div class="review-author">
+        <div class="review-av">PV</div>
+        <div>
+          <div class="review-name">Priya Verma</div>
+          <div class="review-meta">Google Review · 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Came for my girlfriend's birthday — the staff helped set up a surprise. The Red Velvet cake was delicious. The vibe of the place is just so warm and loving. Highly recommend!"</p>
+      <div class="review-author">
+        <div class="review-av">DM</div>
+        <div>
+          <div class="review-name">Dev Mishra</div>
+          <div class="review-meta">Google Review · 2024</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The hookah here is some of the best in Bareilly! Rose garden flavour was amazing. Food came fresh and quick. The ambience with all the plants is so different from other cafes."</p>
+      <div class="review-author">
+        <div class="review-av">NK</div>
+        <div>
+          <div class="review-name">Nikhil Khatri</div>
+          <div class="review-meta">Google Review · 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★☆</div>
+      <p class="review-text">"Good food, great ambience and very friendly service. The lemonade was super refreshing and the pasta was delicious. Perfect spot for a romantic evening in Bareilly."</p>
+      <div class="review-author">
+        <div class="review-av">SJ</div>
+        <div>
+          <div class="review-name">Simran Joshi</div>
+          <div class="review-meta">Google Review · 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:3rem" class="reveal">
+    <a href="https://maps.google.com/?q=V+Love+Cafe+Bareilly" target="_blank" class="btn-ghost">Read All Reviews on Google ↗</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div style="text-align:center">
+    <div class="sec-eyebrow reveal" style="justify-content:center">Questions</div>
+    <h2 class="sec-title reveal">Things You<br>May Wonder</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="faq(this)">Do you need advance booking for couple cabins? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><p>Walk-ins are welcome for regular seating. However, our private couple cabins are very popular and tend to fill up quickly on evenings and weekends. We strongly recommend booking in advance via WhatsApp to guarantee your cabin — especially for dates and anniversaries.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="faq(this)">Can you arrange birthday or anniversary surprises? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><p>Absolutely! Tell us in advance via WhatsApp and we'll arrange candles, balloons, and a personalised birthday or anniversary setup for your special moment. We love making moments magical at V Love Cafe.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="faq(this)">Is hookah available for everyone? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><p>Our hookah lounge is available for adults (18+). We offer premium flavoured hookah options served with quality materials. It's a popular choice for groups and evening outings. Please carry valid ID if requested.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="faq(this)">What is the average cost per person at V Love Cafe? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><p>The average spend per person is approximately ₹200–₹350 for food and drinks. We are priced fairly for the quality of food, ambience, and experience we offer. Couple cabin bookings may include a minimum order.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="faq(this)">Do you have vegetarian options? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><p>Yes! A large portion of our menu is vegetarian — from snacks and pasta to desserts and cold drinks. All items are clearly described. We also accommodate specific dietary requests — just let us know in advance.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="faq(this)">Do you offer home delivery or takeaway? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><p>Yes! Takeaway orders are available — call or WhatsApp us in advance. We are also working on home delivery for select areas in Bareilly. Stay tuned — love is coming to your doorstep soon!</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVE -->
+<section id="reserve" style="background:var(--deep)">
+  <div class="reserve-wrap">
+    <div>
+      <div class="sec-eyebrow left-only reveal">Book Ahead</div>
+      <h2 class="sec-title reveal">Reserve Your<br>Table of Love</h2>
+      <p class="sec-sub italic reveal">Secure your spot — especially for couple cabins and special occasions.</p>
+      <div class="reserve-perks reveal">
+        <div class="perk">
+          <span class="perk-icon">🌹</span>
+          <div><h4>Free Dessert on Pre-Booking</h4><p>Use code VLOVE♡ and get a complimentary Red Velvet slice when you dine in.</p></div>
+        </div>
+        <div class="perk">
+          <span class="perk-icon">💑</span>
+          <div><h4>Priority Couple Cabin</h4><p>Pre-booked couples get first pick of private cabins — most intimate seating guaranteed.</p></div>
+        </div>
+        <div class="perk">
+          <span class="perk-icon">🎂</span>
+          <div><h4>Birthday & Anniversary Setup</h4><p>Tell us your occasion in the form — we'll arrange a personalised surprise for you.</p></div>
+        </div>
+        <div class="perk">
+          <span class="perk-icon">💬</span>
+          <div><h4>WhatsApp Instant Confirm</h4><p>We confirm your booking via WhatsApp within minutes — no waiting, no confusion.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <form class="reserve-form" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp Number *</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date *</label>
+            <input type="date" required>
+          </div>
+          <div class="form-group">
+            <label>Time *</label>
+            <select required>
+              <option value="">Select time slot</option>
+              <option>10:00 AM</option><option>11:00 AM</option>
+              <option>12:00 PM</option><option>1:00 PM</option>
+              <option>2:00 PM</option><option>3:00 PM</option>
+              <option>4:00 PM</option><option>5:00 PM</option>
+              <option>6:00 PM</option><option>7:00 PM</option>
+              <option>8:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Number of Guests</label>
+            <select>
+              <option>2 guests (couple)</option>
+              <option>3–4 guests</option>
+              <option>5–6 guests</option>
+              <option>7+ guests (group)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Occasion</label>
+            <select>
+              <option>Regular visit</option>
+              <option>Date / Romantic dinner</option>
+              <option>Birthday celebration</option>
+              <option>Anniversary</option>
+              <option>Family outing</option>
+              <option>Friends hangout</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Special Requests</label>
+          <textarea rows="3" placeholder="Couple cabin preference, birthday decoration, dietary needs, hookah request..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">♡ &nbsp;Confirm Reservation</button>
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%20want%20to%20book%20a%20table%20at%20V%20Love%20Cafe%20Bareilly" class="wa-book" target="_blank" style="margin-top:0.75rem">💬 &nbsp;Book via WhatsApp instead</a>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo-wrap">
+        <span style="font-size:20px">🕊️</span>
+        <div class="footer-logo-text"><span>V</span> LOVE CAFE</div>
+      </div>
+      <div class="footer-tagline-text">"Love in each bite..."</div>
+      <p>Bareilly's most romantic cafe — where every dish is made with love, every corner blooms with life, and every visit becomes a beautiful memory.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Instagram">📸</a>
+        <a class="social-btn" href="#" title="WhatsApp">💬</a>
+        <a class="social-btn" href="#" title="Facebook">👤</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-h5">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#menu">Our Menu</a></li>
+        <li><a href="#experience">Ambience</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#visit">Visit Us</a></li>
+        <li><a href="#reserve">Reserve Table</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-h5">Visit Us</div>
+      <ul class="footer-links">
+        <li><a href="#">Deen Dayal Puram</a></li>
+        <li><a href="#">near Gangaour Sweets</a></li>
+        <li><a href="#">Bareilly, UP — 243122</a></li>
+        <li><a href="#">10:00 AM — 9:00 PM</a></li>
+        <li><a href="#">Open all 7 days</a></li>
+        <li><a href="#" style="color:var(--rose)">♡ WhatsApp Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span>V Love Cafe</span>, Bareilly. All rights reserved. Made with ♡</p>
+    <p style="font-style:italic;color:var(--muted)">"Love in each bite" — always.</p>
+  </div>
+</footer>
+
+<script>
+// Floating hearts
+const container=document.getElementById('hearts');
+const heartsArr=['♡','♥','❤','💕','💗'];
+for(let i=0;i<18;i++){
+  const h=document.createElement('div');
+  h.className='heart';
+  h.textContent=heartsArr[Math.floor(Math.random()*heartsArr.length)];
+  h.style.left=Math.random()*100+'vw';
+  h.style.fontSize=(8+Math.random()*14)+'px';
+  h.style.animationDuration=(10+Math.random()*16)+'s';
+  h.style.animationDelay=(Math.random()*12)+'s';
+  h.style.opacity=Math.random()*0.4;
+  container.appendChild(h);
+}
+
+// Scroll reveal
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('in'),i*70);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Counter anim
+function countUp(){
+  document.querySelectorAll('[data-target]').forEach(el=>{
+    const t=parseFloat(el.getAttribute('data-target'));
+    const suf=el.querySelector('span')?el.querySelector('span').outerHTML:'';
+    let c=0;const step=t/60;
+    const tm=setInterval(()=>{
+      c=Math.min(c+step,t);
+      el.innerHTML=(Number.isInteger(t)?Math.round(c):c.toFixed(1))+(el.querySelector('span')?el.querySelector('span').outerHTML:'');
+      if(c>=t)clearInterval(tm);
+    },25);
+  });
+}
+const heroObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){countUp();heroObs.disconnect();}},{threshold:0.5});
+const hs=document.querySelector('.hero-divider');
+if(hs)heroObs.observe(hs);
+
+// Menu tabs
+function switchMenu(cat,btn){
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('menu-'+cat).classList.add('active');
+  btn.classList.add('active');
+}
+
+// FAQ
+function faq(btn){
+  const item=btn.parentElement;
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+
+// Form
+function submitForm(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('.btn-submit');
+  btn.textContent='♡ Booking Confirmed! We\'ll WhatsApp you soon.';
+  btn.style.background='#16a34a';
+  btn.style.borderColor='#16a34a';
+  btn.disabled=true;
+}
+
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').style.backdropFilter=window.scrollY>50?'blur(24px)':'blur(20px)';
+});
+</script>
+</body>
+</html>
